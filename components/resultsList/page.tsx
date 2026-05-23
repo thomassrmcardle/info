@@ -29,10 +29,13 @@ export default function ResultList() {
     }
 
     return (
-        <div>
+        <div className="w-full flex flex-col items-center justify-start">
             {getResults(value).map((result, index) => (
-                <div key={index} className="mb-4 p-4 border rounded">{result}</div>
+                <div key={index} className="w-full mb-4 p-4 border rounded">
+                    {result}
+                </div>
             ))}
         </div>
     );
+
 }
