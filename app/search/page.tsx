@@ -1,4 +1,5 @@
 import SearchBar from "../../components/searchBar/page";
+export const dynamic = "force-dynamic";
 
 interface SearchPageProps {
   searchParams: { q?: string };
