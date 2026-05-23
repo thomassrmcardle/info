@@ -15,7 +15,7 @@ export default function Home({ searchParams }: SearchPageProps) {
         <div className="mb-8 w-full">
             <SearchBar query={searchParams.q} />
         </div>
-        <p>Idk what ur wanting from me brochacho</p>
+        <p>Showing results for "{searchParams.q}"</p>
 
       </main>
     </div>
