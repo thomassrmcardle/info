@@ -34,3 +34,12 @@ body {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.lg-txt {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
