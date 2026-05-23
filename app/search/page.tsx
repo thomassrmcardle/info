@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import SearchBar from "../../components/searchBar/page";
 import ResultLabel from "../../components/results/page";
+import ResultList from "../../components/results/page";
 
 export default function Home() {
 
@@ -16,6 +17,10 @@ export default function Home() {
 
         <Suspense fallback={<div>Loading search parameters...</div>}>
           <ResultLabel />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading search results...</div>}>
+          <ResultList />
         </Suspense>
 
       </main>
