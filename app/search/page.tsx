@@ -1,3 +1,5 @@
+"use client";
+
 import SearchBar from "../../components/searchBar/page";
 
 interface SearchPageProps {
