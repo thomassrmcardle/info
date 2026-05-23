@@ -1,14 +1,19 @@
-import Image from "next/image";
-
 import SearchBar from "../../components/searchBar/page";
 
-export default function Home() {
+interface SearchPageProps {
+  searchParams: { q?: string };
+} 
+
+export default function Home({ searchParams }: SearchPageProps) {
+
+
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center py-32 px-16 bg-white dark:bg-black sm:items-start">
         
         <div className="mb-8 w-full">
-            <SearchBar />
+            <SearchBar query={searchParams.q} />
         </div>
         <p>Idk what ur wanting from me brochacho</p>
 
