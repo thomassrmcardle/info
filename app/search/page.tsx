@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import SearchBar from "../../components/searchBar/page";
 import ResultLabel from "../../components/results/page";
-import ResultList from "../../components/results/page";
+import ResultList from "../../components/resultsList/page";
 
 export default function Home() {
 
