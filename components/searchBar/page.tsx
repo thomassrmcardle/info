@@ -1,10 +1,10 @@
 "use client";
-import {useRouter} from "next/navigation"; 
+import {useSearchParams, useRouter} from "next/navigation"; 
 
-type SearchBarProps = { searchQuery?: string };
-
-export default function SearchBar({ searchQuery }: SearchBarProps) {
+export default function SearchBar() {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const searchQuery = searchParams.get("q") ?? "";
 
     function handleSearch(query: string) {
         router.push(`/search?q=${encodeURIComponent(query)}`);

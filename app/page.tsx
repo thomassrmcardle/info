@@ -8,7 +8,7 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center py-32 px-16 bg-white dark:bg-black sm:items-start">
         
         <h1 className="w-full lg-txt mb-8 text-center">Info.</h1>
-        <SearchBar searchQuery="" />
+        <SearchBar />
 
       </main>
     </div>

@@ -1,22 +1,16 @@
 import SearchBar from "../../components/searchBar/page";
-export const dynamic = "force-dynamic";
-
-interface SearchPageProps {
-  searchParams: { q?: string };
-} 
-
-export default function Home({ searchParams }: SearchPageProps) {
 
 
+export default function Home() {
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center py-32 px-16 bg-white dark:bg-black sm:items-start">
         
         <div className="mb-8 w-full">
-            <SearchBar searchQuery={searchParams.q} />
+            <SearchBar />
         </div>
-        <p>Showing results for "{searchParams.q}"</p>
+        <p>Showing results for "ADD LOGIC FOR SEARCH QUERY HERE"</p>
 
       </main>
     </div>
