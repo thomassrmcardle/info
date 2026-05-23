@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import SearchBar from "../../components/searchBar/page";
 
 
@@ -8,7 +9,9 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center py-32 px-16 bg-white dark:bg-black sm:items-start">
         
         <div className="mb-8 w-full">
-            <SearchBar />
+            <Suspense fallback={<div>Loading search params...</div>}>
+              <SearchBar />
+            </Suspense>
         </div>
         <p>Showing results for "ADD LOGIC FOR SEARCH QUERY HERE"</p>
 
