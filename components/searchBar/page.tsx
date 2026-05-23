@@ -1,21 +1,23 @@
 "use client";
 import {useRouter} from "next/navigation"; 
 
-export default function SearchBar(data?: any) {
+type SearchBarProps = { searchQuery?: string };
+
+export default function SearchBar({ searchQuery }: SearchBarProps) {
     const router = useRouter();
 
     function handleSearch(query: string) {
         router.push(`/search?q=${encodeURIComponent(query)}`);
     }
 
-    const initialQuery = data?.query || "";
+    const initialQuery = searchQuery || "";
 
     return (
     <form className="flex w-full" onSubmit={(e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const query = formData.get("search") as string;
-        handleSearch(query);
+        handleSearch(searchQuery);
     }}>
         <input
             className="flex w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent py-4 px-6"
