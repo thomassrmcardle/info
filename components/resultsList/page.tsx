@@ -14,6 +14,10 @@ export default function ResultList() {
     }, [query]);
 
     function getResults(query: string) {
+
+        if (!query || query.trim() === "") {
+            return []; // Return an empty array if the query is empty or only contains whitespace
+        }
         
         const urls = [
             "https://www.wikipedia.org/",
@@ -23,7 +27,7 @@ export default function ResultList() {
             "https://www.twitter.com/",
         ]
 
-        var results = urls.filter(url => url.includes(query));
+        var results = urls.filter(url => url.includes(query.trim()));
 
         return results
     }
