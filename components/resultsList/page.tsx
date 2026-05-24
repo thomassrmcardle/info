@@ -36,10 +36,11 @@ export default function ResultList() {
         <div className="w-full flex flex-col items-center justify-start">
             {getResults(value).map((result, index) => (
                 <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col">
-                    <div className="w-full flex flex-row justify-start items-center mb-2">
+                    <div className="w-full flex flex-row justify-start items-center">
                         <img src={`https://www.google.com/s2/favicons?domain=${result}`} alt="favicon" className="w-4 h-4 mr-2" />
                         <p className="text-blue-500">{result}</p>
                     </div>
+                    <p>A brief description of {result}, likely from the site's metadata.</p>
                     <p className="text-gray-600 text-sm">{result}</p>
                 </div>
             ))}
