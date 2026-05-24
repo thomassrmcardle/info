@@ -17,10 +17,10 @@ export default function ResultLabel() {
         if (!query || query.trim() === "") {
             return "Please enter a search query.";
         }
-        return `Showing results for "${query}"`;
+        return `Showing results for "${query.trim()}"`;
     }
 
     return (
-        <p>{getLabelForQuery(value)}</p>
+        <p className="mb-4">{getLabelForQuery(value)}</p>
     );
 }
