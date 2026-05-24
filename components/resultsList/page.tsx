@@ -25,6 +25,11 @@ export default function ResultList() {
             "https://www.youtube.com/",
             "https://www.facebook.com/",
             "https://www.twitter.com/",
+            "https://www.roblox.com/",
+            "https://www.amazon.com/",
+            "https://www.reddit.com/",
+            "https://www.linkedin.com/",
+            "https://www.instagram.com/"
         ]
 
         var results = urls.filter(url => url.includes(query.trim()));
