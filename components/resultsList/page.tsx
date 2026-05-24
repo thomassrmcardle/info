@@ -45,7 +45,7 @@ export default function ResultList() {
     return (
         <div className="w-full flex flex-col items-center justify-start">
             {results.map((result : any, index : number) => (
-                <a href={`https://www.${result.url}`} rel="noopener noreferrer">
+                <a href={`https://${result.url}`} rel="noopener noreferrer">
                     <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col">
                         <div className="w-full flex flex-row justify-start items-center">
                             <img src={`https://www.google.com/s2/favicons?domain=${result.url}`} alt="favicon" className="w-4 h-4 mr-2" />
