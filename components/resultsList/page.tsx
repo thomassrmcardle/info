@@ -45,14 +45,16 @@ export default function ResultList() {
     return (
         <div className="w-full flex flex-col items-center justify-start">
             {results.map((result : any, index : number) => (
-                <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col">
-                    <div className="w-full flex flex-row justify-start items-center">
-                        <img src={`https://www.google.com/s2/favicons?domain=${result.url}`} alt="favicon" className="w-4 h-4 mr-2" />
-                        <p className="text-blue-500">{result.title}</p>
+                <a href={result.url} target="_blank" rel="noopener noreferrer">
+                    <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col">
+                        <div className="w-full flex flex-row justify-start items-center">
+                            <img src={`https://www.google.com/s2/favicons?domain=${result.url}`} alt="favicon" className="w-4 h-4 mr-2" />
+                            <p className="text-blue-500">{result.title}</p>
+                        </div>
+                        {result.description && <p className="mt-1">{result.description}</p>}
+                        <p className="text-gray-600 text-sm">{result.url}</p>
                     </div>
-                    {result.description && <p className="mt-1">{result.description}</p>}
-                    <p className="text-gray-600 text-sm">{result.url}</p>
-                </div>
+                </a>
             ))}
         </div>
     );
