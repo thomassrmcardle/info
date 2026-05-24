@@ -40,7 +40,7 @@ export default function ResultList() {
                         <img src={`https://www.google.com/s2/favicons?domain=${result}`} alt="favicon" className="w-4 h-4 mr-2" />
                         <p className="text-blue-500">{result}</p>
                     </div>
-                    <p>A brief description of {result}, likely from the site's metadata.</p>
+                    <p className="pt-1">A brief description of {result}, likely from the site's metadata.</p>
                     <p className="text-gray-600 text-sm">{result}</p>
                 </div>
             ))}
