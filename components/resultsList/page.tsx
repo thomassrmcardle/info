@@ -8,38 +8,43 @@ export default function ResultList() {
     const query = searchParams.get("q") ?? "";
     
     const [value, setValue] = useState(query);
+    const [results, setResults] = useState<any[]>([]);
     
     useEffect(() => {
         setValue(query);
     }, [query]);
 
-    function getResults(query: string) {
 
+    async function fetchResults(query: string) {
+        const res = await fetch(`/api/search?q=${query}`);
+        const data = await res.json();
+        console.log(data.results);
+        return data.results;
+    }
+
+    async function getResults(query: string) {
         if (!query || query.trim() === "") {
             return []; // Return an empty array if the query is empty or only contains whitespace
         }
-        
-        const urls = [
-            "https://www.wikipedia.org/",
-            "https://www.google.com/",
-            "https://www.youtube.com/",
-            "https://www.facebook.com/",
-            "https://www.twitter.com/",
-            "https://www.roblox.com/",
-            "https://www.amazon.com/",
-            "https://www.reddit.com/",
-            "https://www.linkedin.com/",
-            "https://www.instagram.com/"
-        ]
 
-        var results = urls.filter(url => url.includes(query.trim()));
+        var query = query.toLowerCase();
+        var newResults = await fetchResults(query);
 
-        return results
+        return newResults
     }
+
+    useEffect(() => {
+        let mounted = true;
+        (async () => {
+            const res = await getResults(value);
+            if (mounted) setResults(res ?? []);
+        })();
+        return () => { mounted = false; };
+    }, [value]);
 
     return (
         <div className="w-full flex flex-col items-center justify-start">
-            {getResults(value).map((result, index) => (
+            {results.map((result : any, index : number) => (
                 <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col">
                     <div className="w-full flex flex-row justify-start items-center">
                         <img src={`https://www.google.com/s2/favicons?domain=${result}`} alt="favicon" className="w-4 h-4 mr-2" />
