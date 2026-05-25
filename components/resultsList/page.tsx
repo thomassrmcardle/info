@@ -54,7 +54,7 @@ export default function ResultList() {
             return (
                 <div className="w-full flex flex-col items-center justify-center">
                     {[1, 2, 3, 4, 5].map((index) => (
-                        <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col card animate-pulse">
+                        <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col loader_card animate-pulse">
                             <div className="w-full flex flex-row justify-start items-center">
                                 <div className="h-4 w-1/4 rounded bg-slate-200"></div>
                             </div>
