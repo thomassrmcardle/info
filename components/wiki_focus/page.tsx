@@ -55,13 +55,13 @@ export default function WikiFocus() {
         }
 
         return (
-            <div className="w-full flex flex-row card items-center">
+            <div className="w-full flex flex-row card items-center mb-4">
                 <div>
                     {results.thumbnail?.source && (
                         <img
                             src={results.thumbnail.source}
                             alt={results.title}
-                            className="w-full h-full object-cover"
+                            className="w-full object-cover rounded mb-4 banner-image"
                         />
                     )}
                     <h1 className="text-xl font-bold">{results.titles.canonical}</h1>

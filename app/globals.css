@@ -72,3 +72,9 @@ body {
   padding: 1rem;
   overflow: hidden;
 }
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: calc(16 / 9);
+}
