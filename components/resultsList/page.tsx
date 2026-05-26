@@ -61,7 +61,7 @@ export default function ResultList() {
 
     function checkUrl(url: string) {
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
-            return "http://" + url;
+            return "https://" + url;
         }
         return url;
     }
@@ -75,8 +75,8 @@ export default function ResultList() {
             return (
                 <div className="w-full flex flex-wrap items-center justify-start">
                     {results.map((result : any, index : number) => (
-                        <div className="w-full mb-4 p-4 border rounded flex flex-col card">
-                            <img src={result.image_url} alt={result.alt_text} className="mb-4 max-h-60 w-full object-contain" />
+                        <div className="mb-4 p-4 border rounded flex flex-col card">
+                            <img src={result.image_url} alt={result.alt_text} className="mb-4 max-h-60 w-full object-contain rounded" />
                             <a href={checkUrl(result.site_url)} className="text-gray-600" target="_blank" rel="noopener noreferrer">
                                 {checkUrl(result.site_url)}
                             </a>
