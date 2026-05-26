@@ -26,13 +26,13 @@ export default function WikiFocus() {
 
     useEffect(() => {
         setLoading(true);
-        (async () => {
-            await fetchResults(value);
+        var result = fetchResults(value);
+        if (result != null) {
             setLoading(false);
-        })();
+        }
     }, [value]);
 
-    if ((!query || query.trim() === "") && loading == false && results != null && results.title) {
+    if (!(!query || query.trim() === "") && loading == false && results != null && results.title) {
         return (
             <div className="w-full flex flex-col card items-center">
                 <h1 className="text-xl font-bold">{results.titles.canonical}</h1>
