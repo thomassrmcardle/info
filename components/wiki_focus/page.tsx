@@ -17,12 +17,26 @@ export default function WikiFocus() {
 
 
     async function fetchResults(query: string) {
-        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${query.toLowerCase()}`);
-        const data = await res.json();
-        console.log(data);
-        setResults(data);
-        console.log(results);
-        return data;
+        try {
+            setLoading(true);
+
+            const encoded = encodeURIComponent(query);
+
+            const res = await fetch(
+                `https://en.wikipedia.org/api/rest_v1/page/summary/${encoded}`
+            );
+
+            const data = await res.json();
+
+            console.log(data);
+
+            setResults(data);
+        } catch (err) {
+            console.error(err);
+            setResults(null);
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
@@ -34,11 +48,28 @@ export default function WikiFocus() {
     }, [value]);
 
     if (loading == false && results != null && results.title) {
+
+        if (results.type?.includes("not_found")) {
+            setResults(null);
+            return;
+        }
+
         return (
-            <div className="w-full flex flex-col card items-center">
-                <h1 className="text-xl font-bold">{results.titles.canonical}</h1>
-                <p className="text-gray-500">{results.extract}</p>
-                <a href={results.content_urls.desktop.page} target="_blank" className="text-blue-500 mt-4">Read more on Wikipedia</a>
+            <div className="w-full flex flex-row card items-center">
+                <div>
+                    <h1 className="text-xl font-bold">{results.titles.canonical}</h1>
+                    <p className="text-gray-500">{results.extract}</p>
+                    <a href={results.content_urls.desktop.page} target="_blank" className="text-blue-500 mt-4">Read more on Wikipedia</a>
+                </div>
+                <div className="ml-4">
+                    {results.thumbnail?.source && (
+                        <img
+                            src={results.thumbnail.source}
+                            alt={results.title}
+                            className="w-full h-full object-cover"
+                        />
+                    )}
+                </div>
             </div>
         );
     }
