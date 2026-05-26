@@ -59,17 +59,27 @@ export default function ResultList() {
 
 
 
+    function checkUrl(url: string) {
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            return "http://" + url;
+        }
+        return url;
+    }
+
+
     function ImageResultsStack() {
         if (loading == true) {
             return null;
         }
         else {
             return (
-                <div className="w-full flex flex-col items-center justify-start">
+                <div className="w-full flex flex-wrap items-center justify-start">
                     {results.map((result : any, index : number) => (
-                        <div>
-                            <img src={result.image_url} alt={result.alt_text} className="mb-4 max-h-60 object-contain" />
-                            <a href={result.site_url} className="text-blue-500" target="_blank" rel="noopener noreferrer">{result.site_url}</a>
+                        <div className="w-full mb-4 p-4 border rounded flex flex-col card">
+                            <img src={result.image_url} alt={result.alt_text} className="mb-4 max-h-60 w-full object-contain" />
+                            <a href={checkUrl(result.site_url)} className="text-gray-600" target="_blank" rel="noopener noreferrer">
+                                {checkUrl(result.site_url)}
+                            </a>
                         </div>
                     ))}
                 </div>
@@ -108,7 +118,7 @@ export default function ResultList() {
                                     <p className="text-blue-500">{result.title}</p>
                                 </div>
                                 {result.description && <p className="mt-1">{result.description}</p>}
-                                <p className="text-gray-600 text-sm">{result.url}</p>
+                                <p className="text-gray-600 text-sm">{checkUrl(result.url)}</p>
                             </div>
                         </a>
                     ))}

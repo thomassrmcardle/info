@@ -78,3 +78,11 @@ body {
   height: auto;
   aspect-ratio: calc(16 / 9);
 }
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.result-image {
+  min-width: 250px;
+}
