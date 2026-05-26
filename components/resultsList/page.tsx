@@ -73,11 +73,13 @@ export default function ResultList() {
         }
         else {
             return (
-                <div className="w-full flex flex-wrap items-center justify-start">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {results.map((result : any, index : number) => (
-                        <div className="mb-4 p-4 border rounded flex flex-col card">
-                            <img src={result.image_url} alt={result.alt_text} className="mb-4 max-h-60 w-full object-contain rounded" />
-                            <a href={checkUrl(result.site_url)} className="text-gray-600" target="_blank" rel="noopener noreferrer">
+                        <div key={index} className="mb-0 p-4 border rounded flex flex-col card">
+                            <div className="w-full h-48 overflow-hidden rounded">
+                                <img src={result.image_url} alt={result.alt_text} className="h-full w-full object-cover" />
+                            </div>
+                            <a href={checkUrl(result.site_url)} className="mt-3 text-gray-600 break-all" target="_blank" rel="noopener noreferrer">
                                 {checkUrl(result.site_url)}
                             </a>
                         </div>
@@ -111,8 +113,8 @@ export default function ResultList() {
                     {<WikiFocus />}
 
                     {results.map((result : any, index : number) => (
-                        <a className="w-full" href={`https://${result.url}`} rel="noopener noreferrer">
-                            <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col card">
+                        <a key={index} className="w-full" href={`https://${result.url}`} rel="noopener noreferrer">
+                            <div className="w-full mb-4 p-4 border rounded flex flex-col card">
                                 <div className="w-full flex flex-row justify-start items-center">
                                     <img src={`https://www.google.com/s2/favicons?domain=${result.url}`} alt="favicon" className="w-4 h-4 mr-2" />
                                     <p className="text-blue-500">{result.title}</p>
