@@ -60,11 +60,11 @@ export default function WikiFocus() {
                     {results.thumbnail?.source && (
                         <img
                             src={results.thumbnail.source}
-                            alt={results.title}
+                            alt={results.titles.normalized}
                             className="w-full object-cover rounded mb-4 banner-image"
                         />
                     )}
-                    <h1 className="text-xl font-bold">{results.titles.canonical}</h1>
+                    <h1 className="text-xl font-bold">{results.titles.normalized}</h1>
                     <p className="text-gray-500 mb-4">{results.extract}</p>
                     <a href={results.content_urls.desktop.page} target="_blank" className="text-blue-500 mt-4">Read more on Wikipedia</a>
                 </div>
