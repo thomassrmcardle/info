@@ -5,9 +5,10 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-export async function GET(req: Request, type: string) {
+export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get("q");
+  const type = searchParams.get("type") ?? "all";
 
   if (!query) {
     return Response.json({ error: "Missing query" }, { status: 400 });
