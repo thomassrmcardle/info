@@ -7,20 +7,27 @@ import WikiFocus from "../wiki_focus/page";
 export default function ResultList() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const query = searchParams.get("q") ?? "";
     
-    const [value, setValue] = useState(query);
     const [results, setResults] = useState<any[]>([]);
 
     const [loading, setLoading] = useState(false);
-    
+
+
+    const tab = searchParams.get("tab") ?? "all";
+    const [tabValue, setTabValue] = useState(tab);
+    useEffect(() => {
+        setTabValue(tab);
+    }, [tab]);
+
+    const query = searchParams.get("q") ?? "";
+    const [value, setValue] = useState(query);
     useEffect(() => {
         setValue(query);
     }, [query]);
 
 
     async function fetchResults(query: string) {
-        const res = await fetch(`/api/search?q=${query}`);
+        const res = await fetch(`/api/search?q=${query}&type=${tabValue}`);
         const data = await res.json();
         console.log(data.results);
         return data.results;
@@ -50,6 +57,25 @@ export default function ResultList() {
         return () => { mounted = false; };
     }, [value]);
 
+
+
+    function ImageResultsStack() {
+        if (loading == true) {
+            return null;
+        }
+        else {
+            return (
+                <div className="w-full flex flex-col items-center justify-start">
+                    {results.map((result : any, index : number) => (
+                        <div>
+                            <img src={result.image_url} alt={result.alt_text} className="mb-4 max-h-60 object-contain" />
+                            <a href={result.site_url} className="text-blue-500" target="_blank" rel="noopener noreferrer">{result.site_url}</a>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+    }
 
     function resultsStack() {
         if (loading == true) {
@@ -93,7 +119,7 @@ export default function ResultList() {
 
     return (
         <div className="w-full flex flex-col items-center justify-start">
-            {resultsStack()}
+            { tabValue === "images" ? <ImageResultsStack /> : resultsStack() }
         </div>
     );
 
