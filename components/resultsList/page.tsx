@@ -73,11 +73,11 @@ export default function ResultList() {
         }
         else {
             return (
-         } className="mb-0 p-4 border       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div className="w-full flex flex-wrap items-start justify-start gap-4">
                     {results.map((result : any, index : number) => (
-                        <div key={index rounded flex flex-col card">
-                            <div className="w-full h-48 overflow-hidden rounded bg-slate-50 flex items-center justify-center">
-                                <img src={result.image_url} alt={result.alt_text} className="max-h-full h-full max-w-full object-contain" />
+                        <div key={index} className="p-4 border rounded flex flex-col card flex-[1_1_auto] min-w-[18rem] max-w-[30rem]">
+                            <div className="w-full overflow-hidden rounded bg-slate-50 flex items-center justify-center">
+                                <img src={result.image_url} alt={result.alt_text} className="max-w-full h-auto object-contain" />
                             </div>
                             <a href={checkUrl(result.site_url)} className="mt-3 text-gray-600 break-all" target="_blank" rel="noopener noreferrer">
                                 {checkUrl(result.site_url)}
