@@ -21,6 +21,7 @@ export default function WikiFocus() {
         const data = await res.json();
         console.log(data);
         setResults(data);
+        console.log(results);
         return data;
     }
 
@@ -32,7 +33,7 @@ export default function WikiFocus() {
         }
     }, [value]);
 
-    if (!(!query || query.trim() === "") && loading == false && results != null && results.title) {
+    if (loading == false && results != null && results.title) {
         return (
             <div className="w-full flex flex-col card items-center">
                 <h1 className="text-xl font-bold">{results.titles.canonical}</h1>
