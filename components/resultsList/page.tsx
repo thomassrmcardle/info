@@ -76,8 +76,8 @@ export default function ResultList() {
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {results.map((result : any, index : number) => (
                         <div key={index} className="mb-0 p-4 border rounded flex flex-col card">
-                            <div className="w-full h-48 overflow-hidden rounded">
-                                <img src={result.image_url} alt={result.alt_text} className="h-full w-full object-cover" />
+                            <div className="w-full h-48 overflow-hidden rounded bg-slate-50 flex items-center justify-center">
+                                <img src={result.image_url} alt={result.alt_text} className="max-h-full max-w-full object-contain" />
                             </div>
                             <a href={checkUrl(result.site_url)} className="mt-3 text-gray-600 break-all" target="_blank" rel="noopener noreferrer">
                                 {checkUrl(result.site_url)}
