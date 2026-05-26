@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
+import WikiFocus from "../wiki_focus/page";
+
 export default function ResultList() {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -69,6 +71,9 @@ export default function ResultList() {
         else {
             return (
                 <div className="w-full flex flex-col items-center justify-start">
+
+                    {results.length > 0 && <WikiFocus />}
+
                     {results.map((result : any, index : number) => (
                         <a className="w-full" href={`https://${result.url}`} rel="noopener noreferrer">
                             <div key={index} className="w-full mb-4 p-4 border rounded flex flex-col card">
