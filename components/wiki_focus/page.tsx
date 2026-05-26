@@ -57,11 +57,6 @@ export default function WikiFocus() {
         return (
             <div className="w-full flex flex-row card items-center">
                 <div>
-                    <h1 className="text-xl font-bold">{results.titles.canonical}</h1>
-                    <p className="text-gray-500">{results.extract}</p>
-                    <a href={results.content_urls.desktop.page} target="_blank" className="text-blue-500 mt-4">Read more on Wikipedia</a>
-                </div>
-                <div className="ml-4">
                     {results.thumbnail?.source && (
                         <img
                             src={results.thumbnail.source}
@@ -69,6 +64,9 @@ export default function WikiFocus() {
                             className="w-full h-full object-cover"
                         />
                     )}
+                    <h1 className="text-xl font-bold">{results.titles.canonical}</h1>
+                    <p className="text-gray-500 mb-4">{results.extract}</p>
+                    <a href={results.content_urls.desktop.page} target="_blank" className="text-blue-500 mt-4">Read more on Wikipedia</a>
                 </div>
             </div>
         );
