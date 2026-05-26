@@ -72,7 +72,7 @@ export default function ResultList() {
             return (
                 <div className="w-full flex flex-col items-center justify-start">
 
-                    {results.length > 0 && <WikiFocus />}
+                    {<WikiFocus />}
 
                     {results.map((result : any, index : number) => (
                         <a className="w-full" href={`https://${result.url}`} rel="noopener noreferrer">
