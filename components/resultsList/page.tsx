@@ -75,7 +75,7 @@ export default function ResultList() {
             return (
                 <div className="w-full flex flex-wrap items-start justify-start gap-4">
                     {results.map((result : any, index : number) => (
-                        <div key={index} className="p-4 border rounded flex flex-col card flex-[1_1_auto] min-w-[18rem] max-w-[30rem]">
+                        <div key={index} className="p-4 border rounded flex flex-col card flex-[1_1_auto] min-w-[18rem]">
                             <div className="w-full h-52 overflow-hidden rounded bg-slate-50 flex items-center justify-center">
                                 <img src={result.image_url} alt={result.alt_text} className="max-w-full h-full w-auto object-contain" />
                             </div>
