@@ -27,7 +27,9 @@ export default function ResultList() {
 
 
     async function fetchResults(query: string) {
-        const res = await fetch(`/api/search?q=${query}&type=${tabValue}`);
+        const encodedQuery = encodeURIComponent(query);
+        const encodedType = encodeURIComponent(tabValue);
+        const res = await fetch(`/api/search?q=${encodedQuery}&type=${encodedType}`);
         const data = await res.json();
         console.log(data.results);
         return data.results;
@@ -38,10 +40,10 @@ export default function ResultList() {
             return []; // Return an empty array if the query is empty or only contains whitespace
         }
 
-        var query = query.toLowerCase();
-        var newResults = await fetchResults(query);
+        const lowerCaseQuery = query.toLowerCase();
+        const newResults = await fetchResults(lowerCaseQuery);
 
-        return newResults
+        return newResults;
     }
 
     useEffect(() => {
@@ -55,7 +57,7 @@ export default function ResultList() {
             }
         })();
         return () => { mounted = false; };
-    }, [value]);
+    }, [value, tabValue]);
 
 
 
