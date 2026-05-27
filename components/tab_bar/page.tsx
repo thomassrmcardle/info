@@ -13,12 +13,6 @@ export default function TabBar() {
 
     const searchParams = useSearchParams();
 
-    const query = searchParams.get("q") ?? "";
-    const [value, setValue] = useState(query);
-    useEffect(() => {
-        setValue(query);
-    }, [query]);
-
     const tab = searchParams.get("tab") ?? "all";
     const [tabValue, setTabValue] = useState(tab);
     useEffect(() => {
@@ -36,6 +30,7 @@ export default function TabBar() {
             {tabs.map((t) => (
                 <button
                     key={t.value}
+                    type="button"
                     className={`px-4 py-2 rounded ${tabValue === t.value ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}
                     onClick={() => handleTabChange(t.value)}
                 >   {t.label}</button>
