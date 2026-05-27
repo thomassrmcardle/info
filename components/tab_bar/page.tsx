@@ -22,7 +22,7 @@ export default function TabBar() {
     function handleTabChange(newTab: string) {
         const params = new URLSearchParams(searchParams.toString());
         params.set("tab", newTab);
-        router.push(`/search?${params.toString()}`);
+        //router.push(`/search?${params.toString()}`);
     }
 
     return (
