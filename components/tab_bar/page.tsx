@@ -25,15 +25,21 @@ export default function TabBar() {
         //router.push(`/search?${params.toString()}`);
     }
 
+    function formatTabUrl(tabValue: string) {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set("tab", tabValue);
+        return `/search?${params.toString()}`;
+    }
+
     return (
         <div className="w-full flex flex-row items-center gap-4">
             {tabs.map((t) => (
-                <button
+                <a
                     key={t.value}
                     type="button"
                     className={`px-4 py-2 rounded ${tabValue === t.value ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}
-                    onClick={() => handleTabChange(t.value)}
-                >   {t.label}</button>
+                    href={formatTabUrl(t.value)}
+                >   {t.label}</a>
             ))}
         </div>
     );
