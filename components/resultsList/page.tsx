@@ -79,7 +79,7 @@ export default function ResultList() {
                             <div className="w-full h-52 overflow-hidden rounded bg-slate-50 flex items-center justify-center">
                                 <img src={result.image_url} alt={result.alt_text} className="max-w-full h-full w-auto object-contain" />
                             </div>
-                            <a href={checkUrl(result.site_url)} className="mt-3 text-gray-600 break-all" target="_blank" rel="noopener noreferrer">
+                            <a href={checkUrl(result.site_url)} className="mt-3 text-sm text-gray-600 break-all" target="_blank" rel="noopener noreferrer">
                                 {checkUrl(result.site_url)}
                             </a>
                         </div>
